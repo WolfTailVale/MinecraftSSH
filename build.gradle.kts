@@ -9,9 +9,10 @@ plugins {
 }
 
 group="fr.formiko.minecraftssh"
-version="1.1.5"
+version="1.6.0"
 description="Allow some shell commands as if minecraft console was an ssh connexion."
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_22
+java.targetCompatibility = JavaVersion.VERSION_22
 var mainMinecraftVersion = "1.21.8"
 val supportedMinecraftVersions = "1.18 - 1.21.8"
 
@@ -31,7 +32,7 @@ dependencies {
 
 java {
   // Configure the java toolchain. This allows gradle to auto-provision JDK 17 on systems that only have JDK 8 installed for example.
-  toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+  toolchain.languageVersion.set(JavaLanguageVersion.of(22))
 }
 
 tasks {
@@ -79,7 +80,7 @@ publishing {
 tasks.withType(xyz.jpenilla.runtask.task.AbstractRun::class) {
     javaLauncher = javaToolchains.launcherFor {
         vendor = JvmVendorSpec.JETBRAINS
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(22)
     }
     jvmArgs("-XX:+AllowEnhancedClassRedefinition")
 }
